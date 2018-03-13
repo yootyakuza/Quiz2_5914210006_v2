@@ -34,6 +34,7 @@ public class Week8_DBView extends AppCompatActivity {
         String[] datas = new String[contacts.size()];
         String[] pn    = new String[contacts.size()];
         String[] imgPaths = new String[contacts.size()];
+        int[] _id = new Integer[contacts.size()];
 
         for(int i=0; i<datas.length; i++)
         {
