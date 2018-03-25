@@ -13,14 +13,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Week8_DBView" />
-        <activity android:name=".DB_MainApp" >
+        <activity android:name=".DB_MainApp">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Week8_DBAdd"></activity>
+        <activity android:name=".Week8_DBAdd" />
+        <activity android:name=".Activity_detail"></activity>
     </application>
 
 </manifest>

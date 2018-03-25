@@ -2,6 +2,7 @@ package com.example.pok.lab3_v2;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -69,7 +70,9 @@ public class Week8_DBView extends AppCompatActivity {
                 .setNegativeButton("Show", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
+                        Intent intent = new Intent(getApplication(),Activity_detail.class);
+                        intent.putExtra("position",position);
+                        startActivity(intent);
                     }
                 });
                 AlertDialog alertDialog = builder.create();

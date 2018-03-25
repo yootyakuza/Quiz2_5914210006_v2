@@ -35,13 +35,13 @@ public class CustomAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int position) {
-        return null;
+    public Object getItem(int pos) {
+        return strName[pos];
     }
 
     @Override
-    public long getItemId(int position) {
-        return 0;
+    public long getItemId(int pos) {
+        return pos;
     }
 
     @Override
