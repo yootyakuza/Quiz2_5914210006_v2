@@ -16,7 +16,6 @@ public class Week8_DBView extends AppCompatActivity {
     Context context;
     ListView listView;
     DatabaseHandler db;
-    int[] _id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +24,7 @@ public class Week8_DBView extends AppCompatActivity {
 
         context = this;
         //Create DB and Table
-         db = new DatabaseHandler(this);
+        db = new DatabaseHandler(this);
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(context);
 
@@ -34,7 +33,6 @@ public class Week8_DBView extends AppCompatActivity {
         String[] datas = new String[contacts.size()];
         String[] pn    = new String[contacts.size()];
         String[] imgPaths = new String[contacts.size()];
-        int[] _id = new Integer[contacts.size()];
 
         for(int i=0; i<datas.length; i++)
         {
@@ -46,6 +44,11 @@ public class Week8_DBView extends AppCompatActivity {
         final CustomAdapter adapter = new CustomAdapter(getApplicationContext(),datas,pn,imgPaths);
         listView = findViewById(R.id.listView1);
 
+        listViewDialog(builder);
+        listView.setAdapter(adapter);
+    }
+
+    private void listViewDialog(final AlertDialog.Builder builder) {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
@@ -56,9 +59,9 @@ public class Week8_DBView extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         builder.setMessage("Are you sure you want to delete " + position);
-                        db.deleteContact(new Contact(_id[position]));
-                        //listView.invalidateViews();// refresh listview
-                        adapter.notifyDataSetChanged();
+                        db.deleteContact(new Contact(position));
+                        listView.invalidateViews();// refresh listview
+                        //adapter.notifyDataSetChanged();
 
                         Toast.makeText(getApplicationContext(),"Delete successfully",Toast.LENGTH_SHORT).show();
                     }
@@ -69,10 +72,10 @@ public class Week8_DBView extends AppCompatActivity {
 
                     }
                 });
-                //builder.create();
-                builder.show();
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
             }
         });
-        listView.setAdapter(adapter);
     }
+
 }

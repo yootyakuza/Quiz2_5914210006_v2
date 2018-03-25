@@ -3,17 +3,12 @@ package com.example.pok.lab3_v2;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import java.io.File;
-import java.io.InputStream;
-
 
 /**
  * Created by pok on 24/2/2561.
@@ -26,9 +21,8 @@ public class CustomAdapter extends BaseAdapter {
     String[] strName;
     String[] phoneNum;
     String[] imgPath;
-    Bitmap bitmap;
 
-    public CustomAdapter(Context mContext, String[] strName, String[] phoneNum, String[] imgPath) {
+    public CustomAdapter(Context mContext, String[] strName, String[] phoneNum, String[] imgPath) {// ปัญหาที่พบตอนค่า bitmap เป็น null คือ context ไม่ส่งค่ามา
         this.mContext = mContext;
         this.strName = strName;
         this.phoneNum = phoneNum;
@@ -50,7 +44,6 @@ public class CustomAdapter extends BaseAdapter {
         return 0;
     }
 
-
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater mInflater = (LayoutInflater)mContext.getSystemService
@@ -67,14 +60,11 @@ public class CustomAdapter extends BaseAdapter {
         TextView textViewPath = convertView.findViewById(R.id.textViewPath);
         textViewPath.setText(imgPath[position]);
 
-//        bitmap = BitmapFactory.decodeFile(imgPath[position]);
-//        ImageView imageView = convertView.findViewById(R.id.newImageview);
-//        imageView.setImageBitmap(bitmap);
+        Bitmap bitmap = BitmapFactory.decodeFile(imgPath[position]);
+        ImageView imageView = convertView.findViewById(R.id.newImageview);
+        imageView.setImageBitmap(bitmap);
 
-
-//        imageView.setImageBitmap(getResizedBitmap(bitmap,105,105));
 //        Glide.with(mContext).load(url).into(imageView);
-
 
         return convertView;
     }

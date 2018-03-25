@@ -1,9 +1,7 @@
 package com.example.pok.lab3_v2;
 
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
@@ -31,10 +29,8 @@ public class Week8_DBAdd extends AppCompatActivity {
     EditText phoneEdt;
     TextView imgPathTxt;
     String imgPath = "";
-    int[] imageId;
     private boolean Formatting;
     private int After;
-    private Context context;
 
     DatabaseHandler db;
 
@@ -49,7 +45,6 @@ public class Week8_DBAdd extends AppCompatActivity {
         nameEdt = findViewById(R.id.nameEdt);
         phoneEdt = findViewById(R.id.phoneEdt);
         imgPathTxt = findViewById(R.id.imgTxtID);
-        context = this;
 
         //Create DB and Table
         db = new DatabaseHandler(this);
@@ -83,9 +78,9 @@ public class Week8_DBAdd extends AppCompatActivity {
                 Contact person = new Contact();
                 person._name = nameEdt.getText().toString();
                 person._phone_number = phoneEdt.getText().toString();
-                person._img_path = imgPathTxt.getText().toString();
+                person._img_path = imgPath;
 
-                db.updateOrInsert(person);
+                db.updateOrInsert(person);//ถ้ามีปัญหาให้เช็ค version
                 finish();
             }
         });

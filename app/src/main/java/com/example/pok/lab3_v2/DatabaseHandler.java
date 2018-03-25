@@ -16,7 +16,7 @@ import java.util.List;
 public class DatabaseHandler extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "contactsManager";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
     private static final String TABLE_CONTACTS = "contacts";
     // Contacts Table Columns names
     private static final String KEY_ID = "id";
@@ -41,7 +41,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + KEY_ID + " INTEGER PRIMARY KEY,"
                 + KEY_NAME + " TEXT NOT NULL UNIQUE,"
                 + KEY_PH_NO + " TEXT NOT NULL UNIQUE,"
-                + KEY_IMG_PATH + " TEXT NOT NULL" + ")";
+                + KEY_IMG_PATH + " TEXT NOT NULL UNIQUE" + ")";
         db.execSQL(CREATE_CONTACTS_TABLE);
     }
 
@@ -51,7 +51,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
     {
-        if (oldVersion < 2) {
+        if (oldVersion < 3) {
             db.execSQL(DATABASE_ALTER_CONTACT_1);
         }
     }
