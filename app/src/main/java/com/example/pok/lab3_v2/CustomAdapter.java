@@ -21,6 +21,7 @@ public class CustomAdapter extends BaseAdapter {
     String[] strName;
     String[] phoneNum;
     String[] imgPath;
+    int[] id;
 
     public CustomAdapter(Context mContext, String[] strName, String[] phoneNum, String[] imgPath) {// ปัญหาที่พบตอนค่า bitmap เป็น null คือ context ไม่ส่งค่ามา
         this.mContext = mContext;
@@ -29,19 +30,23 @@ public class CustomAdapter extends BaseAdapter {
         this.imgPath = imgPath;
     }
 
+    public CustomAdapter(int[] id) {
+        this.id = id;
+    }
+
     @Override
     public int getCount() {
         return strName.length;
     }
 
     @Override
-    public Object getItem(int pos) {
-        return strName[pos];
+    public Object getItem(int position) {
+        return null;
     }
 
     @Override
-    public long getItemId(int pos) {
-        return pos;
+    public long getItemId(int position) {
+        return 0;
     }
 
     @Override
@@ -65,7 +70,6 @@ public class CustomAdapter extends BaseAdapter {
         imageView.setImageBitmap(bitmap);
 
 //        Glide.with(mContext).load(url).into(imageView);
-
         return convertView;
     }
 }
