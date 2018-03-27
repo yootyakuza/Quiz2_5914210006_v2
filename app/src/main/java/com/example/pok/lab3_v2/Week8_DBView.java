@@ -81,7 +81,7 @@ public class Week8_DBView extends AppCompatActivity {
                         listView.invalidateViews();// refresh listview
 
                         Toast.makeText(getApplicationContext(),"Delete ID: " + posID + " successfully",Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(getApplication(),Week8_DBView.class);
+                        Intent intent = new Intent(getApplication(),Week8_DBView.class);//refresh this activity
                         startActivity(intent);
                         finish();
                     }
