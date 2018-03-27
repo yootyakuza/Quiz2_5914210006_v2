@@ -79,9 +79,11 @@ public class Week8_DBView extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         db.deleteContact(new Contact(posID));
                         listView.invalidateViews();// refresh listview
-                        //adapter.notifyDataSetChanged();
 
                         Toast.makeText(getApplicationContext(),"Delete ID: " + posID + " successfully",Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getApplication(),Week8_DBView.class);
+                        startActivity(intent);
+                        finish();
                     }
                 });
                 AlertDialog alertDialog = builder.create();
